@@ -8,6 +8,12 @@ const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
 const app = express();
+
+app.use((req, res, next) => {
+  res.removeHeader("X-Frame-Options");
+  next();
+});
+
 app.use(cors());
 app.use(express.json());
 
